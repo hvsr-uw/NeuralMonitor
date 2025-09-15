@@ -1,0 +1,25 @@
+{
+  "name": "High jitter recorder validation",
+  "recorder": {
+    "id": "recorder-alpha",
+    "hardware_revision": "rev-c",
+    "firmware_version": "2.4.1",
+    "expected_event_rate_hz": 250
+  },
+  "fault_profile": {
+    "drop_rate": 0.035,
+    "duplicate_rate": 0.015,
+    "out_of_order_rate": 0.01,
+    "checksum_failure_rate": 0.008,
+    "latency_spike_every": 60,
+    "latency_spike_ms": 320
+  },
+  "expected_alerts": [
+    "dropped_event",
+    "duplicate_event",
+    "out_of_order_event",
+    "checksum_failure",
+    "latency_spike"
+  ]
+}
+
