@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NeuralMonitor</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <h1>NeuralMonitor</h1>
+          <p>Implant recorder telemetry integrity and latency monitor</p>
+        </div>
+        <div class="actions">
+          <button id="start">Start Session</button>
+          <button id="health">Send Health</button>
+          <button id="simulate">Inject Demo Faults</button>
+          <button id="end">End Session</button>
+        </div>
+      </header>
+
+      <section class="status-grid">
+        <article>
+          <span>Session</span>
+          <strong id="session-id">None</strong>
+        </article>
+        <article>
+          <span>Recorder</span>
+          <strong id="recorder-status">offline</strong>
+        </article>
+        <article>
+          <span>Event Rate</span>
+          <strong id="event-rate">0 Hz</strong>
+        </article>
+        <article>
+          <span>Dropped</span>
+          <strong id="drops">0</strong>
+        </article>
+        <article>
+          <span>p95 Latency</span>
+          <strong id="latency">0 ms</strong>
+        </article>
+      </section>
+
+      <section class="workspace">
+        <div class="panel">
+          <div class="panel-title">
+            <h2>Live Metrics</h2>
+            <span id="ws-state">connecting</span>
+          </div>
+          <canvas id="chart" width="900" height="320"></canvas>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">
+            <h2>Active Alerts</h2>
+            <span id="alert-count">0</span>
+          </div>
+          <div id="alerts" class="alerts"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">
+          <h2>Recent Events</h2>
+          <span>WebSocket feed</span>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Seq</th>
+              <th>Source</th>
+              <th>Payload</th>
+              <th>Checksum</th>
+            </tr>
+          </thead>
+          <tbody id="events"></tbody>
+        </table>
+      </section>
+    </main>
+    <script src="/static/app.js"></script>
+  </body>
+</html>
