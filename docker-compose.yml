@@ -1,0 +1,12 @@
+services:
+  neuralmonitor:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - NEURALMONITOR_DB_PATH=/app/data/neuralmonitor.db
+      - NEURALMONITOR_PUBLISH_RETRY_ATTEMPTS=3
+      - NEURALMONITOR_SIMULATOR_SEED=7
